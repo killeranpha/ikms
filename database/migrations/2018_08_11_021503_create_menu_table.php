@@ -19,6 +19,7 @@ class CreateMenuTable extends Migration
             $table->string('ten');
             $table->string('url');
             $table->integer('level');
+            $table->tinyInteger('daXoa');
             $table->timestamps();
         });
     }

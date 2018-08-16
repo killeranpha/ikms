@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('hoVaTen');
             $table->tinyInteger('active');
-            $table->tinyInteger('level');
             $table->rememberToken();
             $table->timestamps();
         });

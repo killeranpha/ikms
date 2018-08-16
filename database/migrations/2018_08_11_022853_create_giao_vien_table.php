@@ -14,7 +14,7 @@ class CreateGiaoVienTable extends Migration
     public function up()
     {
         Schema::create('giaoVien', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id');
             $table->integer('idTaiKhoan');
             $table->string('ma');
             $table->string('ghiChu');

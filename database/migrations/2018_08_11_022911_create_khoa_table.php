@@ -18,6 +18,7 @@ class CreateKhoaTable extends Migration
             $table->string('ten');
             $table->string('ma');
             $table->date('ngayThangBatDau');
+            $table->string('moTa');
             $table->timestamps();
         });
     }
