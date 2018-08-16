@@ -18,7 +18,6 @@ class CreateMenuTable extends Migration
             $table->integer('chaId');
             $table->string('ten');
             $table->string('url');
-            $table->integer('level');
             $table->timestamps();
         });
     }
