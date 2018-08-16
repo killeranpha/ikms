@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin','middleware' => ['Admin']], function () {
+    Route::get('/diemdanh', function () {
+        return view('Administrator.GiangVien.diemdanh');
+    });
+});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,9 +36,6 @@ Route::get('/danhsachsinhvien', function () {
 });
 Route::get('/danhgiatask', function () {
     return view('Administrator.DanhGia.danhgiatask');
-});
-Route::get('/diemdanh', function () {
-    return view('Administrator.GiangVien.diemdanh');
 });
 Route::get('/danhsachgiangvien', function () {
     return view('Administrator.GiangVien.index');
@@ -60,3 +61,10 @@ Route::get('/danhsachnguoidung', function () {
 Route::get('/quanlynguoidung', function () {
     return view('admin.nguoidung.quanlynguoidung');
 });
+Route::get('loi',function(){
+    return view('errors.403');
+});
+Route::get('danhsachmonhoc','MonHocController@index')->name('danhsachmonhoc');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
