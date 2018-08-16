@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNhomKpiTable extends Migration
+class CreateNguoidungvachucnangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateNhomKpiTable extends Migration
      */
     public function up()
     {
-        Schema::create('nhomKpi', function (Blueprint $table) {
+        Schema::create('nguoidungvachucnang', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ten');
-            $table->string('nhomCha');
-            $table->tinyInteger('daXoa');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateNhomKpiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nhomKpi');
+        Schema::dropIfExists('nguoidungvachucnang');
     }
 }

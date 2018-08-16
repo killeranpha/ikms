@@ -60,3 +60,5 @@ Route::get('/danhsachnguoidung', function () {
 Route::get('/quanlynguoidung', function () {
     return view('admin.nguoidung.quanlynguoidung');
 });
+Route::get('/danhsachnhomkpi','NhomKpiController@index')->name('danhsachnhomkpi');
+Route::get('/themmoinhomkpi','NhomKpiController@create')->name('themmoinhomkpi');
