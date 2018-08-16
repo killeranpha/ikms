@@ -17,6 +17,7 @@ class CreateMonHocTable extends Migration
             $table->increments('id');
             $table->string('ten');
             $table->string('ma');
+            $table->integer('daXoa');
             $table->timestamps();
         });
     }
