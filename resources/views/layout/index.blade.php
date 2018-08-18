@@ -18,7 +18,10 @@
     <link href="admin_asset/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet">
 
     <!-- Bootstrap CSS-->
-    <link href="admin_asset/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet">
+    <link href="admin_asset/vendor/bootstrap-4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin_asset/vendor/bootstrap-4.1/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    
     <script language="JavaScript" type="text/javascript" src="js/jquery-3.3.1.min.js">
     </script>
     <script language="JavaScript" type="text/javascript" src="js/jquery.validate.min.js">
@@ -70,7 +73,7 @@
     <!-- Bootstrap JS-->
     <script src="admin_asset/vendor/bootstrap-4.1/popper.min.js">
     </script>
-    <script src="admin_asset/vendor/bootstrap-4.1/bootstrap.min.js">
+    <script src="admin_asset/vendor/bootstrap-4.1/js/bootstrap.min.js">
     </script>
     <!-- Vendor JS       -->
     <script src="admin_asset/vendor/slick/slick.min.js">

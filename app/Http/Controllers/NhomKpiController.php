@@ -24,7 +24,8 @@ class NhomKpiController extends Controller
      */
     public function create()
     {
-        return view('Administrator.NhomKpi.create');
+        $danhSach = NhomKpiModel::GetIdParent(0,0);  
+        return view('Administrator.NhomKpi.create',compact('danhSach'));
     }
 
     /**
@@ -35,7 +36,14 @@ class NhomKpiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nhomCha = $request->nhomCha;
+        $tenKpi = $request->tenKpi;
+        $array = ['ten'=>$tenKpi,'nhomCha'=>$nhomCha,'daXoa'=>0,'level'=>0];
+        NhomKpiModel::insert(
+            [$array]
+        );
+        $danhSach = NhomKpiModel::GetIdParent(1,0);
+        return view('Administrator.NhomKpi.index',compact('danhSach'))->with('Success','Thêm thành công!'); 
     }
 
     /**
@@ -55,9 +63,11 @@ class NhomKpiController extends Controller
      * @param  \App\NhomKpiModel  $nhomKpiModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(NhomKpiModel $nhomKpiModel)
+    public function edit($id)
     {
-        //
+        $idNhomKpiSua = NhomKpiModel::select('id','ten','nhomCha','level','daXoa')->where('daXoa',0)->where('id',$id)->get();
+        $danhSach = NhomKpiModel::GetIdParent(0,0);
+        return view('Administrator.NhomKpi.edit',compact('idNhomKpiSua','danhSach'));
     }
 
     /**

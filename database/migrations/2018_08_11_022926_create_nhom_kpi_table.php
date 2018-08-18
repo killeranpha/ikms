@@ -17,6 +17,7 @@ class CreateNhomKpiTable extends Migration
             $table->increments('id');
             $table->string('ten');
             $table->string('nhomCha');
+            $table->integer('level');
             $table->tinyInteger('daXoa');
             $table->timestamps();
         });

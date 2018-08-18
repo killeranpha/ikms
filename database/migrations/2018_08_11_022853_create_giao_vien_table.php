@@ -15,7 +15,6 @@ class CreateGiaoVienTable extends Migration
     {
         Schema::create('giaoVien', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('idTaiKhoan');
             $table->string('ma');
             $table->string('ghiChu');
             $table->tinyInteger('gioiTinh');

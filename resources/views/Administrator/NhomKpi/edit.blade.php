@@ -1,14 +1,14 @@
 @extends('layout.index')
 @section('content')
 <section class="p-t-20">
-   <form action="{{Route('themnhomkpi')}}" method="post" enctype="multipart/form-data" class="form-horizontal" name="formThemMoi" id="formThemMoi">
+   <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" name="formSuaChua" id="formThemMoi">
       {!! csrf_field() !!}
       <div class="container">
          <div class="row m-t-30">
             <div class="col-lg-12">
                <div class="card">
                   <div class="card-header" style="text-align:center;">
-                     <strong>THÊM MỚI NHÓM KPI</strong>
+                     <strong>SỬA NHÓM KPI</strong>
                   </div>
                   <div class="card-body card-block">
                      <div class="row form-group">
@@ -16,7 +16,9 @@
                            <label class=" form-control-label" for="tenKpi">Tên nhóm KPI</label>
                         </div>
                         <div class="col-12 col-md-9">
-                           <input type="text" id="tenKpi" name="tenKpi" placeholder="" class="form-control">
+                           @foreach($idNhomKpiSua as $value)
+                           <input type="text" id="tenKpi" name="tenKpi" placeholder="{{$value->ten}}" class="form-control">
+                           @endforeach
                         </div>
                      </div>
                      <div class="row form-group">
@@ -36,10 +38,7 @@
                      <div class="form-group">
                         <div class="test" style="text-align:center;">
                            <button type="submit" class="btn btn-primary btn-sm">
-                           Thêm
-                           </button>
-                           <button type="reset" class="btn btn-danger btn-sm">
-                           Làm mới
+                           Xác nhận
                            </button>
                         </div>
                      </div>
@@ -52,7 +51,7 @@
 <script>
    jQuery.noConflict();
    (function($) {
-         $("#formThemMoi").validate({
+         $("#formSuaChua").validate({
             rules: {
                 tenKpi: {
                     required: true,
