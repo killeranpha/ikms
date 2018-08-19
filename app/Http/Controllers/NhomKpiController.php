@@ -42,7 +42,7 @@ class NhomKpiController extends Controller
         NhomKpiModel::insert(
             [$array]
         );
-        $danhSach = NhomKpiModel::GetIdParent(1,0);
+        $danhSach = NhomKpiModel::GetIdParent(0,0);
         return view('Administrator.NhomKpi.index',compact('danhSach'))->with('Success','Thêm thành công!'); 
     }
 

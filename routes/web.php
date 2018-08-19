@@ -73,8 +73,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Menu
+Route::get('danhsachmenu','MenuController@index')->name('danhsachmenu');
 Route::get('/themmenu','MenuController@create');
 Route::post('/themmenu','MenuController@store');
 Route::get('/suamenu/{id}','MenuController@edit');
 Route::post('/suamenu','MenuController@update');
+Route::get('/xoamenu/{id}','MenuController@destroy');
+//
 Route::get('/danhsachkhoa','KhoaController@index');

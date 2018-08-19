@@ -1,6 +1,7 @@
 @extends('layout.index')
 @section('content')
 <section class="p-t-20">
+<div class="main-content"> 
    <form action="{{Route('themnhomkpi')}}" method="post" enctype="multipart/form-data" class="form-horizontal" name="formThemMoi" id="formThemMoi">
       {!! csrf_field() !!}
       <div class="container">
@@ -104,5 +105,6 @@
              });
    })(jQuery);
 </script>
+</div>
 </section>
 @endsection

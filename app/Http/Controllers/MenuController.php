@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Menu;
-use App\ChucNang;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -13,9 +12,10 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $danhSach = Menu::GetMenuByChaId(1,1);
+        return view('Administrator.Menu.danhsachmenu',compact('danhSach'));
     }
 
     /**
@@ -40,7 +40,7 @@ class MenuController extends Controller
         $chaId = $request->chaId;
         $ten = $request->tenMenu;
         $url = $request->url;
-        $array = ['chaId'=>$chaId,'ten'=>$ten,'url'=>$url];
+        $array = ['chaId'=>$chaId,'ten'=>$ten,'url'=>$url,'level'=>0,'daXoa'=>0];
         Menu::insert(
             [$array]
         );
@@ -105,11 +105,12 @@ class MenuController extends Controller
      */
     public function destroy(Request $request)
     {
-        $idXoa = $request->idXoa;
+        $idXoa = $request->id;
         if(isset($idXoa)){
-            Users::where('id', $idXoa)
+            Menu::where('id', $idXoa)
                  ->update(['daXoa' => 1]);
         }
-        return view('Administrator.Menu.index')->with('Success','Xóa thành công!');
+        $danhSach = Menu::GetMenuByChaId(1,1);
+        return view('Administrator.Menu.danhsachmenu',compact('danhSach'))->with('Success','Xóa thành công!');
     }
 }
