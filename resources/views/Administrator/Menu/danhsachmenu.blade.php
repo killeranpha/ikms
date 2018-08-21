@@ -93,7 +93,7 @@
 				                Thêm sinh viên
 				            </button>
 				            <button type="reset" class="btn btn-danger btn-sm">
-				                Làm mới
+				                Làm mới nè
 				            </button>
 				        	</div>
 				        </div>
