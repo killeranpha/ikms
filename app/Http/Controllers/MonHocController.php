@@ -35,7 +35,7 @@ class MonHocController extends Controller
      */
     public function create()
     {
-        return view('Administrator.MonHoc.Create');
+        return view('Administrator.MonHoc.create');
     }
 
     /**
@@ -73,7 +73,7 @@ class MonHocController extends Controller
     public function edit($id)
     {
         $getMonHoc = MonHocModel::find($id)-> toArray();
-        return view('Administrator.MonHoc.Sua',compact('getMonHoc'));
+        return view('Administrator.MonHoc.edit',compact('getMonHoc'));
     }
 
     /**
