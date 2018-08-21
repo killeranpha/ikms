@@ -64,7 +64,9 @@ Route::get('/quanlynguoidung', function () {
 Route::get('/danhsachnhomkpi','NhomKpiController@index')->name('danhsachnhomkpi');
 Route::get('/themmoinhomkpi','NhomKpiController@create')->name('themmoinhomkpi');
 Route::post('/themnhomkpi','NhomKpiController@store')->name('themnhomkpi');
-Route::get('/suanhomkpi/{id}','NhomkpiController@edit')->name('suanhomkpi');
+Route::get('/suanhomkpi/{id}','NhomkpiController@edit');
+Route::post('/suanhomkpi/action','NhomKpiController@update');
+Route::get('/xoanhomkpi/{id}','NhomKpiController@destroy');
 Route::get('loi',function(){
     return view('errors.403');
 });
@@ -82,3 +84,4 @@ Route::post('/suamenu','MenuController@update');
 Route::get('/xoamenu/{id}','MenuController@destroy');
 //
 Route::get('/danhsachkhoa','KhoaController@index');
+Route::get('/danhsachkpi','KpiController@index')->name('danhsachkpi');

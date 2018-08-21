@@ -111,6 +111,6 @@ class MenuController extends Controller
                  ->update(['daXoa' => 1]);
         }
         $danhSach = Menu::GetMenuByChaId(1,1);
-        return view('Administrator.Menu.danhsachmenu',compact('danhSach'))->with('Success','Xóa thành công!');
+        return redirect()->route('danhsachmenu')->with('Success','Xóa thành công!');
     }
 }

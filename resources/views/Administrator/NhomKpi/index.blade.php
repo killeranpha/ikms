@@ -1,10 +1,14 @@
 @extends('layout.index')
 @section('content')
 <section class="p-t-20">
+    @if (session('message'))
+    <div class="alert alert-success text-center">
+        <p>{{ session('message') }}</p>
+    </div>
+    @endif
    <div class="main-content">
-      <h1>DANH SÁCH NHÓM KPI</h1>
+   <H1 style="margin-top: -101px;text-align:  center;font-family: Times New Roman;">DANH SÁCH NHÓM KPI</H1>
       <form>
-         <input type="hidden" name="kieuSapXep" id="kieuSapXep">
          <div class="section__content section__content--p30">
             <div class="row m-t-30">
                <div class="col-md-12">
@@ -12,12 +16,12 @@
                   <!-- DATA TABLE-->
                   <div class="table-responsive m-b-40">
                      <table class="table table-bordered ">
-                        <thead class="thead-dark">
-                           <tr>
-                              <th></th>
-                              <th>Tên</th>
-                              <th>Chức năng</th>
-                           </tr>
+                        <thead class="thead-dark" style="color: white;background: #34363a;">
+                           <div style="text-align:center">
+                                <th></th>
+                                <th>Tên</th>
+                                <th>Chức năng</th>
+                           </div>
                         </thead>
                         <tbody>
                            @foreach($danhSach as $value)
@@ -35,10 +39,10 @@
                                           title="Sửa">
                                        <i class="zmdi zmdi-edit"></i>
                                        </a>
-                                       <a href="" class="item" data-toggle="tooltip" data-placement="top"
+                                       <button onclick="xoa({{$value->id}}); return false;" class="item" data-toggle="tooltip" data-placement="top"
                                           title="Xóa">
                                        <i class="zmdi zmdi-delete"></i>
-                                       </a>
+                                       </button>
                                     </div>
                                  </td>
                               </tr>
@@ -54,17 +58,12 @@
       </form>
    </div>
 </section>
-<style>
-   .main-content h1 {
-   margin-top: -101px;
-   margin-bottom: 40px;
-   text-align: center;
-   font-family: Times New Roman;
-   }
-</style>
 <script>
-   function SapXepFunction(kieuSapXep) {
-       $('#kieuSapXep').val(kieuSapXep);
-   }
+   function xoa(id){
+        if(confirm('Bạn muốn xóa không ?')){
+            document.location.href="xoanhomkpi/"+id+"";
+        }
+    }
+    
 </script>
 @endsection
