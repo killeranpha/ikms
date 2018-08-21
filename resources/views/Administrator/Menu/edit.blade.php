@@ -2,14 +2,17 @@
 
 <section class="p-t-20">
 	<form action="/suamenu" method="post">  
-		 <!-- Với form có method post thì phải them token -->
-         <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-         <input type="hidden" name="id" value="{{$getMenuGroup['id']}}">
+    <!-- Với form có method post thì phải them token -->
+    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+    <input type="hidden" name="id" value="{{$getMenuGroup['id']}}">
     <div class="container">
         <div class="row m-t-30">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="text-align:center;">
+                        <a href="{{Route('danhsachmenu')}}" class="btn btn-primary btn-sm" style="float:left">
+                            Quay lại
+                        </a>
                         <strong>SỬA MENU</strong>
                     </div>
                     <div class="card-body card-block">
@@ -51,7 +54,7 @@
                         <div class="test" style="text-align:center;">
                             @if(isset($Success))
                             <div class="alert alert-success text-center">
-                                <b style="color : red">{{$Success}}</b>
+                                <b style="color : blue">{{$Success}}</b>
                             </div>
                             @endif 
                             <button type="submit" class="btn btn-primary btn-sm">

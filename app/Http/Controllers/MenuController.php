@@ -14,7 +14,7 @@ class MenuController extends Controller
      */
     public function index(Request $request)
     {
-        $danhSach = Menu::GetMenuByChaId(1,1);
+        $danhSach = Menu::GetMenuByChaId(1,1,0);
         return view('Administrator.Menu.danhsachmenu',compact('danhSach'));
     }
 
@@ -25,7 +25,7 @@ class MenuController extends Controller
      */
     public function create(Request $request)
     {
-        $danhSach = Menu::GetMenuByChaId(0,1);
+        $danhSach = Menu::GetMenuByChaId(0,1,0);
         return view('Administrator.Menu.create',compact('danhSach'));
     }
 
@@ -40,11 +40,11 @@ class MenuController extends Controller
         $chaId = $request->chaId;
         $ten = $request->tenMenu;
         $url = $request->url;
-        $array = ['chaId'=>$chaId,'ten'=>$ten,'url'=>$url,'level'=>0,'daXoa'=>0];
+        $array = ['chaId'=>$chaId,'ten'=>$ten,'url'=>$url];
         Menu::insert(
             [$array]
         );
-        $danhSach = Menu::GetMenuByChaId(0,1);
+        $danhSach = Menu::GetMenuByChaId(0,1,0);
         return view('Administrator.Menu.create',compact('danhSach'))->with('Success','Thêm thành công!');
     }
 
@@ -68,7 +68,7 @@ class MenuController extends Controller
     public function edit($id)
     {
         $getMenu = Menu::All();
-        $danhSach = Menu::GetMenuByChaId(0,1);
+        $danhSach = Menu::GetMenuByChaId(0,1,$id);
         $getMenuGroup = Menu::find($id)->toArray(); //tìm id và đưa tất cả ra 1 mảng
         return view('Administrator.Menu.edit',compact('getMenuGroup','danhSach','getMenu'));
     }
@@ -87,7 +87,8 @@ class MenuController extends Controller
         $chaId = $allRequest['chaId'];
         $ten = $allRequest['ten'];
         $url = $allRequest['url'];
-
+        $back = $allRequest['back'];
+        
         $Menu = Menu::find($id);
         $Menu->chaId = $chaId;
         $Menu->ten =  $ten;
@@ -110,7 +111,7 @@ class MenuController extends Controller
             Menu::where('id', $idXoa)
                  ->update(['daXoa' => 1]);
         }
-        $danhSach = Menu::GetMenuByChaId(1,1);
-        return view('Administrator.Menu.danhsachmenu',compact('danhSach'))->with('Success','Xóa thành công!');
+        $danhSach = Menu::GetMenuByChaId(1,1,0);
+        return redirect()->route('danhsachmenu')->with('Success','Xóa thành công!');
     }
 }

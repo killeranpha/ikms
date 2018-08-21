@@ -80,5 +80,7 @@ Route::post('/themmenu','MenuController@store');
 Route::get('/suamenu/{id}','MenuController@edit');
 Route::post('/suamenu','MenuController@update');
 Route::get('/xoamenu/{id}','MenuController@destroy');
-//
+// Khoa
 Route::get('/danhsachkhoa','KhoaController@index');
+// KPI
+Route::get('/danhsachkpi','KpiController@index');
