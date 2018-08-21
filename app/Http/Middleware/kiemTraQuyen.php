@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-class AdminMiddlerware
+use App\NguoiDungVaChucNang;
+class kiemTraQuyen
 {
     /**
      * Handle an incoming request.
@@ -17,14 +18,17 @@ class AdminMiddlerware
     {
         if (Auth::check()) {
             // Đã đăng nhập.
+            $name = $request->path();
             $user = Auth::user();
-            if($user->level == 1){
+            $nguoiDung =  NguoiDungVaChucNang::where('idNguoiDung',$user->id)->firstOrFail()->get();
+            $query =  $chucNang->join('chucnang', 'idChucNang', '=', 'chucnang.id');
+            $r = $query->where('chucnang.ma','=', $name)->get();    
+            if(count($r) >= 1){
                 return $next($request);
             }else{
                 return redirect('loi');
             }
-        }
-        else{
+        }else{
           //chưa đăng nhập.
           return redirect('login');
         }

@@ -35,7 +35,7 @@ class MonHocController extends Controller
      */
     public function create()
     {
-        //
+        return view('Administrator.MonHoc.Create');
     }
 
     /**
@@ -46,7 +46,11 @@ class MonHocController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $monHoc = new MonHocModel;
+        $monHoc->ma =  $request->ma;
+        $monHoc->ten = $request->ten;   
+        $monHoc->save();   
+        return redirect('danhsachmonhoc')->with('thongBao','Thêm Thành Công');
     }
 
     /**
@@ -66,9 +70,10 @@ class MonHocController extends Controller
      * @param  \App\MonHocModel  $monHocModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(MonHocModel $monHocModel)
+    public function edit($id)
     {
-        //
+        $getMonHoc = MonHocModel::find($id)-> toArray();
+        return view('Administrator.MonHoc.Sua',compact('getMonHoc'));
     }
 
     /**
@@ -78,9 +83,13 @@ class MonHocController extends Controller
      * @param  \App\MonHocModel  $monHocModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MonHocModel $monHocModel)
+    public function update(Request $request)
     {
-        //
+        $MonHoc = MonHocModel::find($request->id);
+        $MonHoc->ma = $request->ma;
+        $MonHoc->ten =  $request->ten;   
+        $MonHoc->save();   
+        return redirect('danhsachmonhoc')->with('thongBao','Sửa Thành Công');
     }
 
     /**
@@ -89,8 +98,11 @@ class MonHocController extends Controller
      * @param  \App\MonHocModel  $monHocModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MonHocModel $monHocModel)
+    public function destroy(MonHocModel $monHocModel,$id)
     {
-        //
+        $monHoc = MonHocModel::find($id);
+        $monHoc->daXoa = 1 ;   
+        $monHoc->save();
+        return redirect('danhsachmonhoc')->with('thongBao','Xóa Thành Công');
     }
 }

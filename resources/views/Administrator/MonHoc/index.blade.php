@@ -11,8 +11,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+            @if(session('thongBao'))
+					<div class="alert alert-success text-center">
+						{{session('thongBao')}}
+					</div>
+			@endif
                 <h3 class="title-5 m-b-35">Danh sách cấu hình</h3>
-              <p>Có {{$count}} Kết Qủa Tìm Kiếm</p>
         <form action="{{Route('danhsachmonhoc')}}" method="GET">
                 <input type="hidden" name="tenTruongSapXep" id="tenTruongSapXep">
 				<input type="hidden" name="kieuSapXep" id="kieuSapXep">
@@ -43,6 +47,10 @@
                 </div>
                             
                 <div class="table-responsive table-responsive-data2">
+               
+                    <div class="float-left">
+                        <p class="pl-5">Có {{$count}} Kết Quả</p>
+                    </div>
                     <div class="float-right">
                         {!! $monHoc->links() !!}
                     </div>
@@ -81,10 +89,10 @@
 							    <td>{{$value->ten}}</td>
 							    <td>
                                     <div class="table-data-feature">
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Sửa">
+                                    <a class="item" data-toggle="tooltip" data-placement="top" href="suamonhoc/{{$value["id"]}}" title="Sửa">
                                         <i class="zmdi zmdi-edit"></i>
-                                    </button>
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                    </a>
+                                    <button class="item" onclick="xoa({{$value->id}});return false;" data-toggle="tooltip" data-placement="top" title="Xóa">
                                         <i class="zmdi zmdi-delete"></i>
                                     </button>
                                     </div>
@@ -93,13 +101,23 @@
                         @endforeach
 					    </tbody>
 					</table>
+                    <div class="text-center mt-2">
+                        {!! $monHoc->links() !!}
+                    </div> 
+                    <div class="card-footer" style="background: #f2f2f2;margin: auto;text-align: center;">
+				        <div class="test" style="text-align:center;">
+				            <a type="submit" class="btn btn-primary btn-sm" href="{{Route('themmonhoc')}}">
+				                Thêm môn học
+				            </a>
+				            <a type="reset" class="btn btn-danger btn-sm" href="{{Route('danhsachmonhoc')}}">
+				                Làm mới
+				            </a>
+				        </div>
+				    </div>
         </form>                           
                 </div>
             </div>
-        </div>
-        <div class="text-center mt-2">
-            {!! $monHoc->links() !!}
-        </div>          
+        </div>         
     </div>
 </section>
 <script>
@@ -107,5 +125,10 @@
 		$('#tenTruongSapXep').val(tenTruong);
 		$('#kieuSapXep').val(kieuSapXep);
 	}
+    function xoa(id){
+        if(confirm('Bạn muốn xóa không ?')){
+            document.location.href="/xoamonhoc/"+id+"";
+        }
+    }
 </script>
 @endsection
