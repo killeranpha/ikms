@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -68,11 +69,13 @@ Route::get('/suanhomkpi/{id}','NhomkpiController@edit')->name('suanhomkpi');
 Route::get('loi',function(){
     return view('errors.403');
 });
+// Môn Học
 Route::get('danhsachmonhoc','MonHocController@index')->name('danhsachmonhoc');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('themmonhoc','MonHocController@create');
+Route::post('/themmonhoc','MonHocController@store') ->name('themmonhoc');
+Route::get('suamonhoc/{id}','MonHocController@edit');
+Route::post('/suamonhoc','MonHocController@update') ->name('suamonhoc');
+Route::get('/xoamonhoc/{id}','MonHocController@destroy') ->name('xoamonhoc');
 // Menu
 Route::get('danhsachmenu','MenuController@index')->name('danhsachmenu');
 Route::get('/themmenu','MenuController@create');
