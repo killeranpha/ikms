@@ -38,7 +38,10 @@
                               <div class="alert alert-success text-center">
                                  <p>{{$Success}}</p>
                               </div>
-                              @endif 
+                              @endif
+                              <button type="submit" class="btn btn-primary btn-sm">
+                              Back
+                              </button>
                               <button type="submit" class="btn btn-primary btn-sm">
                               Thêm
                               </button>
