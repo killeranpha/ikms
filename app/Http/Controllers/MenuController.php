@@ -15,7 +15,7 @@ class MenuController extends Controller
     public function index(Request $request)
     {
         $danhSach = Menu::GetMenuByChaId(1,1);
-        return view('Administrator.Menu.danhsachmenu',compact('danhSach'));
+        return view('Administrator.Menu.index',compact('danhSach'));
     }
 
     /**
